@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "main.css",
-	"sourceRoot": "/home/aun/work/my-site",
+	"sourceRoot": "/home/ayekaunic/projects/my website/my-site",
 	"sources": [
 		"assets/css/main.scss"
 	],
