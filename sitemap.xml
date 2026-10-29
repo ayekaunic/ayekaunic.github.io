@@ -2,42 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/shower-thoughts/2026-09-13-happiness/</loc>
+    <loc>https://example.org/shower-thoughts/2026-09-13-happiness/</loc>
     <lastmod>2026-09-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/shower-thoughts/</loc>
+    <loc>https://example.org/shower-thoughts/</loc>
     <lastmod>2026-09-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/shower-thoughts/2026-08-23-just-provide-value-to-other-people/</loc>
+    <loc>https://example.org/shower-thoughts/2026-08-23-just-provide-value-to-other-people/</loc>
     <lastmod>2026-08-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/shower-thoughts/2026-04-21-borrowing/</loc>
+    <loc>https://example.org/shower-thoughts/2026-04-21-borrowing/</loc>
     <lastmod>2026-04-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/shower-thoughts/2025-08-14-how-to-run/</loc>
+    <loc>https://example.org/shower-thoughts/2025-08-14-how-to-run/</loc>
     <lastmod>2025-08-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/shower-thoughts/2025-06-05-on-being-successful/</loc>
+    <loc>https://example.org/shower-thoughts/2025-06-05-on-being-successful/</loc>
     <lastmod>2025-06-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/shower-thoughts/2025-05-23-all-on-a-diet/</loc>
+    <loc>https://example.org/shower-thoughts/2025-05-23-all-on-a-diet/</loc>
     <lastmod>2025-05-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/</loc>
+    <loc>https://example.org/</loc>
     <lastmod>2022-08-25T21:30:04+08:00</lastmod>
   </url><url>
-    <loc>/categories/</loc>
+    <loc>https://example.org/categories/</loc>
   </url><url>
-    <loc>/recommendations/videos/</loc>
+    <loc>https://example.org/recommendations/videos/</loc>
   </url><url>
-    <loc>/recommendations/books/</loc>
+    <loc>https://example.org/recommendations/books/</loc>
   </url><url>
-    <loc>/recommendations/movies/</loc>
+    <loc>https://example.org/recommendations/movies/</loc>
   </url><url>
-    <loc>/recommendations/shows/</loc>
+    <loc>https://example.org/recommendations/shows/</loc>
   </url><url>
-    <loc>/recommendations/</loc>
+    <loc>https://example.org/recommendations/</loc>
   </url><url>
-    <loc>/tags/</loc>
+    <loc>https://example.org/tags/</loc>
   </url>
 </urlset>
