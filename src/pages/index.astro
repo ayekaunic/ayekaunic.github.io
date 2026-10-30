@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import { getThoughts, dateLabel, excerpt } from '../lib/content';
+const thoughts = await getThoughts();
+const latest = thoughts[0];
+const picks = await getCollection('recommendations');
+const pickCount = (id: string) => String((picks.find(p => p.id === id)?.body?.match(/^- /gm) || []).length).padStart(2, '0');
+---
+<Layout>
+  <section class="hero shell" id="top">
+    <div class="eyebrow hero-kicker"><span class="live-dot"></span> a small corner of the internet <span class="edition">aun's personal notebook / 01</span></div>
+    <h1 class="hero-title"><span class="hero-line">a work</span><span class="hero-line second-line">in <em>progress.</em><span class="hero-asterisk" aria-hidden="true">✳</span></span></h1>
+    <div class="hero-baseline"><p class="hero-intro">hey, i'm aun.<br/>thinking out loud. paying attention.<br/>trying to leave things a little better.</p><p class="handnote">not finished.<br/>just getting started.<svg viewBox="0 0 100 50" aria-hidden="true"><path d="M5 5 Q70 2 65 40 M54 28 L65 42 L80 30"/></svg></p><a class="round-link" href="#thoughts" aria-label="Explore the notebook">↓</a></div>
+    <div class="hero-rule"><span>belief. consistency. attention to detail.</span><span>scroll a little. stay a while. ↓</span></div>
+  </section>
+  <section class="thought-section shell" id="thoughts">
+    <div class="section-heading" data-reveal><div><span class="eyebrow">01 / thinking out loud</span><h2>shower <em>thoughts.</em></h2></div><a class="text-link" href="/shower-thoughts/">the whole collection <span>↗</span></a></div>
+    <div class="thought-grid">
+      <a class="featured-thought" href={`/shower-thoughts/${latest.id}/`} data-reveal><span class="eyebrow"><span class="live-dot"></span> the latest thought</span><h3>{latest.data.title}<span class="feature-arrow">↗</span></h3><p>{excerpt(latest.body)}</p><div class="card-bottom"><time datetime={latest.data.date}>{dateLabel(latest.data.date)}</time><span>read the thought ↗</span></div><span class="card-scribble" aria-hidden="true">worth thinking about.</span></a>
+      <div class="thought-list">{thoughts.slice(1,4).map((post,i) => <a class="thought-row" href={`/shower-thoughts/${post.id}/`} data-reveal><span class="row-index">0{i+2}</span><div><time datetime={post.data.date}>{dateLabel(post.data.date)}</time><h3>{post.data.title}</h3></div><span class="row-arrow">↗</span></a>)}</div>
+    </div>
+    <div class="random-line"><span>don't know where to start?</span><button id="random-thought" data-paths={JSON.stringify(thoughts.map(p=>`/shower-thoughts/${p.id}/`))}>leave it to chance <span>⚄</span></button></div>
+  </section>
+  <section class="belief-section">
+    <div class="shell belief-inner"><span class="eyebrow">a note to self (and maybe you)</span><blockquote data-reveal>you solve shit.<br/>you make things <em>better.</em><br/>and they stay better<br/>after you leave.</blockquote><div class="belief-bottom"><span class="belief-star" aria-hidden="true">✳</span><a class="text-link" href="/shower-thoughts/2026-10-30-on-being-missed/">from “on being missed” ↗</a></div></div>
+  </section>
+  <section class="shelf-section shell">
+    <div class="section-heading" data-reveal><div><span class="eyebrow">02 / passed along with love</span><h2>good <em>things.</em></h2></div><p>things that stayed with me.<br/>maybe they'll stay with you, too.</p></div>
+    <div class="shelf">{[{id:'books',label:'for a different perspective',symbol:'Aa',count:'03'},{id:'movies',label:'for a couple of hours',symbol:'▶',count:'03'},{id:'shows',label:'for one more episode',symbol:'▤',count:'06'},{id:'videos',label:'for a little spark',symbol:'↗',count:'03'}].map((item,i)=><a href={`/recommendations/${item.id}/`} class={`shelf-item shelf-${i}`} data-reveal><div class="shelf-art" aria-hidden="true"><span>{item.symbol}</span><small>aun's picks / {pickCount(item.id)}</small></div><div class="shelf-label"><h3>{item.id}</h3><span>↗</span></div><p>{item.label}</p></a>)}</div>
+  </section>
+</Layout>
