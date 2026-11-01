@@ -26,7 +26,7 @@ const lines = [['you', 'solve', 'shit.'], ['you', 'make', 'things'], ['better.']
     <div class="random-line"><span>or don't overthink it.</span><button id="random-thought" data-paths={JSON.stringify(thoughts.map(p=>`/shower-thoughts/${p.id}/`))}>pick one for me ↗</button></div>
   </section>
   <section class="good-section shell">
-    <div class="section-heading"><div><span class="eyebrow">02 / things i'm glad i found</span><h2>good things<span class="period">.</span></h2></div><p>borrow a little perspective.</p></div>
+    <div class="section-heading"><div><span class="eyebrow">02 / things i'm glad i found</span><h2>recommendations<span class="period">.</span></h2></div><p>borrow a little perspective.</p></div>
     <div class="good-list">{[{id:'books',label:'a different perspective'},{id:'movies',label:'a couple of hours'},{id:'shows',label:'one more episode'},{id:'videos',label:'a little spark'}].map(item=><a href={`/recommendations/${item.id}/`} class="good-row"><span class="good-name">{item.id}</span><span class="good-description">{item.label}</span><span class="good-count">[{pickCount(item.id)}]</span><span class="row-arrow">↗</span></a>)}</div>
   </section>
 </Layout>
