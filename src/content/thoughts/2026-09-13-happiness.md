@@ -2,6 +2,7 @@
 title: "on happiness"
 date: "2026-09-13"
 draft: false
+heroQuote: "fully present. fully engaged."
 ---
 
 happiness, to me, is the state of complete absorption in the present moment.

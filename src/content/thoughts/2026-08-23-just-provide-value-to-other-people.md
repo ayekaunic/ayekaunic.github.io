@@ -2,6 +2,7 @@
 title: "just provide value to other people"
 date: "2026-08-23"
 draft: false
+heroQuote: "it really is that simple."
 ---
 
 i think it really is that simple.

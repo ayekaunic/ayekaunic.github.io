@@ -2,6 +2,7 @@
 title: "living on borrowed time"
 date: "2026-04-21"
 draft: false
+heroQuote: "interest, over time, does not stay small."
 ---
 
 what we borrow from today, we owe to tomorrow. and the longer we keep borrowing, the heavier the bill becomes.

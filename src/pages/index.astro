@@ -5,19 +5,41 @@ import { getThoughts, dateLabel, readingTime } from '../lib/content';
 const thoughts = await getThoughts();
 const picks = await getCollection('recommendations');
 const pickCount = (id: string) => String((picks.find(p => p.id === id)?.body?.match(/^- /gm) || []).length).padStart(2, '0');
-const lines = [['you', 'solve', 'shit.'], ['you', 'make', 'things'], ['better.']];
+const quotedThoughts = thoughts.filter(post => post.data.heroQuote?.trim());
+const featuredThought = quotedThoughts[0];
+const heroQuote = featuredThought?.data.heroQuote?.replace(/\s+/g, ' ').trim() || 'thinking out loud.';
+const fragments = quotedThoughts.slice(1, 4);
+const words = heroQuote.split(' ');
+// Balance the composition by text length rather than assuming seven words.
+const lineCount = Math.min(3, words.length);
+const lines: string[][] = [];
+let remaining = [...words];
+for (let row = 0; row < lineCount; row++) {
+  const rowsLeft = lineCount - row;
+  const target = remaining.join(' ').length / rowsLeft;
+  const line: string[] = [];
+  while (remaining.length > rowsLeft - 1) {
+    const next = remaining[0];
+    const currentLength = line.join(' ').length;
+    if (line.length && Math.abs(currentLength - target) < Math.abs(currentLength + next.length + 1 - target)) break;
+    line.push(remaining.shift()!);
+  }
+  lines.push(line);
+}
+if (remaining.length) lines[lines.length - 1].push(...remaining);
+const longestLine = Math.max(...lines.map(line => [...line.join(' ')].length));
+const heroSize = Math.min(10.4, 115 / longestLine);
+const sourceUrl = featuredThought ? `/shower-thoughts/${featuredThought.id}/` : '/shower-thoughts/';
 ---
 <Layout title="aun — thinking out loud.">
   <section class="word-experiment" id="top" aria-label="An introduction in motion">
     <div class="word-stage">
       <div class="experiment-meta"><span>inside aun's head / a few things in motion</span><a href="#thoughts">skip to the thoughts ↓</a></div>
-      <div class="fragment-field" aria-label="Fragments from the notebook">
-        <a class="fragment fragment-one" href="/shower-thoughts/2026-09-13-happiness/">learning how to be here.</a>
-        <a class="fragment fragment-two" href="/shower-thoughts/2026-04-21-borrowing/">time keeps track.</a>
-        <a class="fragment fragment-three" href="/shower-thoughts/2025-08-14-how-to-run/">one step at a time.</a>
-      </div>
-      <h1 class="statement" aria-label="you solve shit. you make things better.">{lines.map((line, row) => <span class={`statement-line line-${row}`} aria-hidden="true">{line.map(word => <span class="statement-word" data-word><span class="word-body">{[...word].map(letter => <span class="glyph">{letter}</span>)}</span></span>)}</span>)}</h1>
-      <div class="experiment-bottom"><p>hey, i'm aun.<br/>these are the things i think about.</p><a class="statement-source" href="/shower-thoughts/2026-10-30-on-being-missed/">and they stay better after you leave.<span>from “on being missed” ↗</span></a><span class="scroll-cue">scroll to make sense of it ↓</span></div>
+      {fragments.length > 0 && <div class="fragment-field" aria-label="Fragments from the notebook">
+        {fragments.map((post, index) => <a class={`fragment fragment-${['one', 'two', 'three'][index]}`} href={`/shower-thoughts/${post.id}/`}>{post.data.heroQuote}</a>)}
+      </div>}
+      <h1 class="statement dynamic-statement" style={`--hero-size: ${heroSize}vw;`} aria-label={heroQuote}>{lines.map((line, row) => <span class={`statement-line line-${row}`} aria-hidden="true">{line.map(word => <span class="statement-word" data-word><span class="word-body">{[...word].map(letter => <span class="glyph">{letter}</span>)}</span></span>)}</span>)}</h1>
+      <div class="experiment-bottom"><p>hey, i'm aun.<br/>these are the things i think about.</p><a class="statement-source" href={sourceUrl}>{featuredThought ? 'sit with this thought.' : 'explore the notebook.'}<span>{featuredThought ? `from “${featuredThought.data.title}” ↗` : 'all shower thoughts ↗'}</span></a><span class="scroll-cue">scroll to make sense of it ↓</span></div>
     </div>
   </section>
   <section class="thought-section shell" id="thoughts">

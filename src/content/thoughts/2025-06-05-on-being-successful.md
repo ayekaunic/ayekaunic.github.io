@@ -2,6 +2,7 @@
 title: "on being successful"
 date: "2025-06-05"
 draft: false
+heroQuote: "thoughtful, intentional and deliberate about the goals we decide to pursue and dedicate our lives to, rather than just blindly following the herd."
 ---
 
 to understand what it means to be successful in life, it is important we first understand success itself.

@@ -2,6 +2,7 @@
 title: "aren't we all \"on a diet\"?"
 date: "2025-05-23"
 draft: false
+heroQuote: "let intuition and spontaneity take the wheel."
 ---
 
 some of us on one meal a day. some on low-carb. some on keto. the list goes on... and some (read most) of us are on a eat-whatever-you-want diet. a go-with-the-flow diet.

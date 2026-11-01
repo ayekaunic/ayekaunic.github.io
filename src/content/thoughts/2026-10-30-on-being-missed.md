@@ -2,6 +2,7 @@
 title: "on being missed"
 date: "2026-10-30"
 draft: false
+heroQuote: "solve shit. make things better. then go find something else worth solving."
 ---
 
 people often take pride in how dependent their workplace is on them.

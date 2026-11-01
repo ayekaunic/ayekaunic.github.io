@@ -15,13 +15,13 @@ media.add({ motion: '(prefers-reduced-motion: no-preference)', desktop: '(min-wi
     const poses = desktop
       ? [[-6,-12,-12,.72],[19,-8,8,.95],[9,19,-9,1.2],[-12,15,8,.65],[17,-2,-7,.78],[5,18,12,.65],[34,7,-8,.56]]
       : [[-3,-8,-9,.8],[10,-6,7,.85],[2,12,-7,1.05],[-5,12,6,.8],[8,0,-6,.85],[0,10,8,.8],[17,6,-5,.7]];
-    const sequence = gsap.timeline({ scrollTrigger: {trigger:experiment,start:'top top+=90',end:'bottom bottom',scrub:.7,invalidateOnRefresh:true} });
+    const sequence = gsap.timeline({ scrollTrigger: {trigger:experiment,start:()=>`top top+=${document.querySelector('.header')?.getBoundingClientRect().height || 90}`,end:'bottom bottom',scrub:.7,invalidateOnRefresh:true} });
     gsap.utils.toArray<HTMLElement>('[data-word]').forEach((word,i) => {
-      const [x,y,rotation,scale] = poses[i];
+      const [x,y,rotation,scale] = poses[i % poses.length];
       sequence.from(word, {x:()=>innerWidth*x/100,y:()=>innerHeight*y/100,rotation,scale,opacity:.45 + (i%3)*.2,ease:'power2.inOut',duration:1},0);
     });
-    sequence.to('.fragment', {opacity:0,y:-24,stagger:.03,duration:.45},0)
-      .from('.statement-source',{opacity:0,y:15,duration:.35},.65)
+    if (document.querySelector('.fragment')) sequence.to('.fragment', {autoAlpha:0,y:-24,stagger:.03,duration:.45},0);
+    sequence.from('.statement-source',{opacity:0,y:15,duration:.35},.65)
       .to('.scroll-cue',{opacity:0,duration:.2},.8);
     cleanups.push(()=>experiment.classList.remove('is-moving'));
   }
