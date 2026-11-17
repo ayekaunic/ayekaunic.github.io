@@ -19,7 +19,7 @@ const { Content: Story } = await render(story);
     <div class="work-copy"><Overview /></div>
     <ProjectDiagram kind={project.id} />
   </div>
-  {project.id === 'website' && <a class="text-link project-link" href="https://www.foresight.com.pk/">visit Foresight Research ↗</a>}
+  {project.id === 'website' && <a class="text-link project-link" href="https://www.foresight.com.pk/" target="_blank" rel="noopener noreferrer">visit Foresight Research ↗<span class="sr-only"> (opens in a new tab)</span></a>}
   <details class="case-disclosure">
     <summary><span class="when-closed">read the full story ↓</span><span class="when-open">show less ↑</span><span class="sr-only"> — {project.formal}</span></summary>
     <div class="case-narrative work-copy"><Story /></div>
