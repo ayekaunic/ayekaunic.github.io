@@ -51,4 +51,8 @@ const sourceUrl = featuredThought ? `/shower-thoughts/${featuredThought.id}/` : 
     <div class="section-heading"><div><span class="eyebrow">02 / things i'm glad i found</span><h2>recommendations<span class="period">.</span></h2></div><p>borrow a little perspective.</p></div>
     <div class="good-list">{[{id:'books',label:'a different perspective'},{id:'movies',label:'a couple of hours'},{id:'shows',label:'one more episode'},{id:'videos',label:'a little spark'}].map(item=><a href={`/recommendations/${item.id}/`} class="good-row"><span class="good-name">{item.id}</span><span class="good-description">{item.label}</span><span class="good-count">[{pickCount(item.id)}]</span><span class="row-arrow">↗</span></a>)}</div>
   </section>
+  <section class="work-preview shell" aria-labelledby="work-preview-title">
+    <span class="eyebrow">03 / things i build</span>
+    <div class="work-preview-body"><h2 id="work-preview-title">a little of<br/>my work.</h2><div><p>Backend systems, data infrastructure, and automation.<br/>Some of the things I've worked on.</p><a class="text-link" href="/work/">explore the work ↗</a></div></div>
+  </section>
 </Layout>
